@@ -1,0 +1,45 @@
+﻿use SecurityDB
+
+db.createCollection('Users')
+
+db.Users.insertMany([
+    {
+        "Username": "erick",
+        "Password": "erick",
+        "FirstName": "Erick",
+        "LastName": "Aróstegui Cunza",
+        "Avatar": "assets/avatars/erick.png",
+        "AvailableProducts": [
+            "TRI",
+            "HSI",
+            "FAI",
+            "CAR"
+        ]
+    },
+    {
+        "Username": "jennifer",
+        "Password": "jennifer",
+        "FirstName": "Jennifer",
+        "LastName": "Rodriguez Estrada",
+        "Avatar": "assets/avatars/jennifer.png",
+        "AvailableProducts": [
+            "TRI",
+            "HSI",
+            "FAI",
+            "CAR"
+        ]
+    },
+    {
+        "Username": "oscar",
+        "Password": "oscar",
+        "FirstName": "Oscar",
+        "LastName": "Donayre Aróstegui",
+        "Avatar": "assets/avatars/oscar.png",
+        "AvailableProducts": [
+            "TRI",
+            "HSI",
+            "FAI",
+            "CAR"
+        ]
+    }
+])
