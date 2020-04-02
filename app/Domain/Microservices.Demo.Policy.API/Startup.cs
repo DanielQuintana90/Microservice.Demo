@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microservices.Demo.Policy.API.Infrastructure.Agents;
 using Microservices.Demo.Policy.API.Infrastructure.Configuration;
+using Microservices.Demo.Policy.API.Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,6 +37,7 @@ namespace Microservices.Demo.Policy.API
             services.AddDiscoveryClient(Configuration);
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddRestClients();
+            services.AddDataServices(Configuration);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Microservices.Demo.Policy.API", Version = "v1" });
