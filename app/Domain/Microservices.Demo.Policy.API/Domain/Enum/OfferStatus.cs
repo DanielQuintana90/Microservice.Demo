@@ -7,7 +7,7 @@ namespace Microservices.Demo.Policy.API.Domain.Enum
 {
     public enum OfferStatus
     {
-        New,
+        New=1,
         Converted,
         Rejected
     }

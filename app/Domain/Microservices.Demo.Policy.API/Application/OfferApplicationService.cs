@@ -18,8 +18,7 @@ namespace Microservices.Demo.Policy.API.Application
         }
         public async Task<CreateOfferResult> CreateOfferAsync(CreateOfferCommand command, string agentLogin)
         {
-            var result = IsNullOrWhiteSpace(agentLogin) ? await _mediator.Send(command) : await _mediator.Send(new CreateOfferByAgentCommand(agentLogin, command));
-            var offer = await _mediator.Send(command);
+            var offer = IsNullOrWhiteSpace(agentLogin) ? await _mediator.Send(command) : await _mediator.Send(new CreateOfferByAgentCommand(agentLogin, command));
             return offer;
         }        
     }

@@ -30,8 +30,17 @@ namespace Microservices.Demo.Policy.API.Infrastructure.Data.UnitOfWork
 
         public async Task CommitChanges()
         {
-            _policyDbContext.SaveChanges();
-            await tx.CommitAsync();
+            try
+            {
+                _policyDbContext.SaveChanges();
+                await tx.CommitAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+           
         }
 
         public void Dispose()

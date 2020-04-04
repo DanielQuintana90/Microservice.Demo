@@ -97,10 +97,23 @@
               </div>
             </div>
           </div>
+          <div *ngIf="IsReadOnly()">
+            <mat-form-field fxFill>
+              <mat-label>Price</mat-label>
+              <input matInput type="number" value="{{offer.TotalPrice}}" disabled="disabled">
+              <mat-icon matSuffix>euro_symbol</mat-icon>
+            </mat-form-field>
+          </div>
         </div>
       </mat-card-content>
       <mat-card-actions fxLayout="row" fxLayoutAlign="center center">
-        <button mat-raised-button color="primary">CALCULATE PRICE</button>
+        <div *ngIf="IsReadOnly()">
+          <button mat-raised-button color="primary">BUY</button>
+          <a mat-button (click)="changeParameters()" color="primary" >CHANGE PARAMETERS</a>
+        </div>
+        <div *ngIf="!IsReadOnly()">
+          <button mat-raised-button color="primary">CALCULATE PRICE</button>
+        </div>
         <a mat-button [routerLink]="['../','list']">BACK</a>
       </mat-card-actions>
     </mat-card>

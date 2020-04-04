@@ -18,7 +18,7 @@ namespace Microservices.Demo.Policy.API.Infrastructure.Data.Entities
         public DateTime CreationDate { get; set; }
         public string AgentLogin { get; set; }
         public int PolicyValidityPeriodId { get; set; }
-        public int PolicyHolderId { get; set; }
+        public int? PolicyHolderId { get; set; }
         public int OfferStatusId { get; set; }
 
         public virtual OfferStatus OfferStatus { get; set; }

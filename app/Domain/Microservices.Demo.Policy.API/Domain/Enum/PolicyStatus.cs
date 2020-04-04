@@ -7,7 +7,7 @@ namespace Microservices.Demo.Policy.API.Domain.Enum
 {
     public enum PolicyStatus
     {
-        Active,
+        Active =1,
         Terminated
     }
 }

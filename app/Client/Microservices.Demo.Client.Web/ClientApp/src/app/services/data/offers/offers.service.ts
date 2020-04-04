@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import { ICreateOfferCommand } from './icreate-offer-command';
 import { Observable } from 'rxjs';
+import { ICreateOfferResult } from './icreate-offer-result';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class OffersService {
   ) { }
 
   calculatePrice(createOfferCommand: ICreateOfferCommand): Observable<any> {
-    return this.http.post<any>(this.offersApiUrl, createOfferCommand)
+    return this.http.post<ICreateOfferResult>(this.offersApiUrl, createOfferCommand)
       .pipe(catchError(this.handleError));
   }
 

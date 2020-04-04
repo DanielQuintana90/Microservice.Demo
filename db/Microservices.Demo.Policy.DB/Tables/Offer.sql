@@ -7,7 +7,7 @@
 	CreationDate DATETIME2 NOT NULL,
 	AgentLogin VARCHAR(250),
 	PolicyValidityPeriodId INT NOT NULL,
-	PolicyHolderId INT NOT NULL,
+	PolicyHolderId INT NULL,
 	OfferStatusId INT NOT NULL,
 	
 	CONSTRAINT FK_OfferPolicyValidityPeriod FOREIGN KEY (PolicyValidityPeriodId) REFERENCES PolicyValidityPeriod(PolicyValidityPeriodId),
