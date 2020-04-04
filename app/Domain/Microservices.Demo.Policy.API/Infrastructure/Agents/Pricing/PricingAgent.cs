@@ -1,6 +1,6 @@
-﻿using Microservices.Demo.Policy.API.Infrastructure.Agents.Pricing.Commands;
-using Microservices.Demo.Policy.API.Infrastructure.Agents.Pricing.Commands.Dto;
-using Microservices.Demo.Policy.API.Infrastructure.Agents.Pricing.Entities;
+﻿using Microservices.Demo.Policy.API.CQRS.Commands.Infrastructure.Dtos.Offer;
+using Microservices.Demo.Policy.API.Infrastructure.Agents.Pricing.Commands;
+using Microservices.Demo.Policy.API.Infrastructure.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Microservices.Demo.Policy.API.Infrastructure.Agents.Pricing
 {
-    public class PricingAgent: IPricingAgent
+    public class PricingAgent : IPricingAgent
     {
         private readonly IPricingClient pricingClient;
 
@@ -33,12 +33,12 @@ namespace Microservices.Demo.Policy.API.Infrastructure.Agents.Pricing
             return new Price(result.CoverPrices);
         }
 
-        private List<QuestionAnswer> ConstructAnswers(List<Answer> answers)
+        private List<QuestionAnswerDto> ConstructAnswers(List<Answer> answers)
         {
             return answers.Select(a => ToQuestionAnswer(a)).ToList();
         }
 
-        private QuestionAnswer ToQuestionAnswer(Answer a)
+        private QuestionAnswerDto ToQuestionAnswer(Answer a)
         {
             if (a is TextAnswer)
             {

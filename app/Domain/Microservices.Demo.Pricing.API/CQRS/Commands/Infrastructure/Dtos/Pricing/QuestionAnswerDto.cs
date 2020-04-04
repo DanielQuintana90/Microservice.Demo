@@ -1,12 +1,12 @@
-﻿using Microservices.Demo.Policy.API.CQRS.Commands.Infrastructure.Dtos.Converters;
-using Microservices.Demo.Policy.API.Infrastructure.Enum;
+﻿using Microservices.Demo.Pricing.API.CQRS.Commands.Infrastructure.Dtos.Converters;
+using Microservices.Demo.Pricing.API.Infrastructure.Enum;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace Microservices.Demo.Policy.API.CQRS.Commands.Infrastructure.Dtos.Offer
+namespace Microservices.Demo.Pricing.API.CQRS.Commands.Infrastructure.Dtos.Pricing
 {
     [JsonConverter(typeof(QuestionAnswerDtoConverter))]
     public abstract class QuestionAnswerDto
@@ -16,26 +16,25 @@ namespace Microservices.Demo.Policy.API.CQRS.Commands.Infrastructure.Dtos.Offer
         public abstract object GetAnswer();
 
     }
-
-    public abstract class QuestionAnswer<T> : QuestionAnswerDto
+    public abstract class QuestionAnswerDto<T> : QuestionAnswerDto
     {
         public T Answer { get; set; }
 
         public override object GetAnswer() => Answer;
     }
 
-    public class TextQuestionAnswer : QuestionAnswer<string>
+    public class TextQuestionAnswer : QuestionAnswerDto<string>
     {
         public override QuestionType QuestionType => QuestionType.Text;
     }
 
 
-    public class NumericQuestionAnswer : QuestionAnswer<decimal>
+    public class NumericQuestionAnswer : QuestionAnswerDto<decimal>
     {
         public override QuestionType QuestionType => QuestionType.Numeric;
     }
 
-    public class ChoiceQuestionAnswer : QuestionAnswer<string>
+    public class ChoiceQuestionAnswer : QuestionAnswerDto<string>
     {
         public override QuestionType QuestionType => QuestionType.Choice;
     }

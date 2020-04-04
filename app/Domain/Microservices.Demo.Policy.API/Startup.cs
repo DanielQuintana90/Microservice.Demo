@@ -4,9 +4,12 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using MediatR;
+using Microservices.Demo.Policy.API.Application;
+using Microservices.Demo.Policy.API.Domain;
 using Microservices.Demo.Policy.API.Infrastructure.Agents;
 using Microservices.Demo.Policy.API.Infrastructure.Configuration;
 using Microservices.Demo.Policy.API.Infrastructure.Data;
+using Microservices.Demo.Policy.API.Infrastructure.Dtos.Converters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -37,6 +40,8 @@ namespace Microservices.Demo.Policy.API
             services.AddDiscoveryClient(Configuration);
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddRestClients();
+            services.AddApplicationServices();
+            services.AddDomainServices();
             services.AddDataServices(Configuration);
             services.AddSwaggerGen(c =>
             {
@@ -46,8 +51,7 @@ namespace Microservices.Demo.Policy.API
             .AddNewtonsoftJson(options =>
             {
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver();
-                options.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
-                options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+                options.SerializerSettings.Converters.Add(new QuestionAnswerDtoConverter());
             });
         }
 

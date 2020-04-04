@@ -26,6 +26,8 @@
         {
             _servicesUrl = servicesUrl.Value;
             var handler = new DiscoveryHttpClientHandler(discoveryClient);
+            //Certificado no valido
+            handler.ServerCertificateCustomValidationCallback = delegate { return true; };
             var httpClient = new HttpClient(handler, false)
             {
                 BaseAddress = new Uri(_servicesUrl.PricingApiUrl)
@@ -35,7 +37,16 @@
 
         public Task<CalculatePriceResult> CalculatePrice([Body] CalculatePriceCommand cmd)
         {
-            return retryPolicy.ExecuteAsync(async () => await client.CalculatePrice(cmd));
+            try
+            {
+                return retryPolicy.ExecuteAsync(async () => await client.CalculatePrice(cmd));
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            
         }
     }
 }

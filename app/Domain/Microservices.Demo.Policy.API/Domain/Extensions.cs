@@ -16,5 +16,3 @@ namespace Microservices.Demo.Policy.API.Domain
         }
     }
 }
-
-}

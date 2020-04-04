@@ -129,7 +129,10 @@ export class ProductDetailComponent implements OnInit {
       Answers:this.getQuestionsAnswers()
     };
 
-    this.offersService.calculatePrice(createOfferCommand);
+    this.offersService.calculatePrice(createOfferCommand)
+      .subscribe((response: any) => {
+        console.log(response);
+      });
   }
 
 }

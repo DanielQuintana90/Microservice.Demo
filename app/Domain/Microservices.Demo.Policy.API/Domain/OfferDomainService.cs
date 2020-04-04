@@ -1,11 +1,8 @@
 ﻿namespace Microservices.Demo.Policy.API.Domain
 {
-    using Microservices.Demo.Policy.API.Domain.Entities;
     using Microservices.Demo.Policy.API.Infrastructure.Data.Entities;
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
+
     public class OfferDomainService
     {
         public static Offer CreateOfferForPrice(String productCode,

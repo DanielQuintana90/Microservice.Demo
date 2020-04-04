@@ -1,4 +1,5 @@
-﻿using Microservices.Demo.Policy.API.CQRS.Commands.Infrastructure.Dtos.Offer;
+﻿using Microservices.Demo.Pricing.API.CQRS.Commands.Infrastructure.Dtos.Pricing;
+using Microservices.Demo.Pricing.API.Infrastructure.Enum;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -6,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Microservices.Demo.Policy.API.CQRS.Commands.Infrastructure.Dtos.Converters
+namespace Microservices.Demo.Pricing.API.CQRS.Commands.Infrastructure.Dtos.Converters
 {
     public class QuestionAnswerDtoConverter : JsonConverter
     {
@@ -41,7 +42,6 @@ namespace Microservices.Demo.Policy.API.CQRS.Commands.Infrastructure.Dtos.Conver
 
         private static QuestionAnswerDto Create(JObject jsonObject)
         {
-            // examine the $type value
             var typeName = Enum.Parse<QuestionType>(jsonObject["QuestionType"].ToString());
             switch (typeName)
             {

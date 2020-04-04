@@ -1,12 +1,9 @@
-﻿using Microservices.Demo.Policy.API.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Enum=Microservices.Demo.Policy.API.Domain.Enum;
-
-namespace Microservices.Demo.Policy.API.Infrastructure.Data.Entities
+﻿namespace Microservices.Demo.Policy.API.Infrastructure.Data.Entities
 {
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Enum = Microservices.Demo.Policy.API.Domain.Enum;
     public partial class Offer
     {
         public Offer(

@@ -16,9 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="CQRS\Commands\Infrastructure\Dtos\Offer\" />
     <Folder Include="CQRS\Queries\" />
-    <Folder Include="Infrastructure\Agents\Pricing\Commands\Dto\" />
-    <Folder Include="Infrastructure\Agents\Pricing\Entities\" />
   </ItemGroup>
 
 

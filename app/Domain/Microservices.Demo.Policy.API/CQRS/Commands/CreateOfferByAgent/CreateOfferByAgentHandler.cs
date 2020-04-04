@@ -1,12 +1,9 @@
 ﻿using MediatR;
 using Microservices.Demo.Policy.API.CQRS.Commands.CreateOffer;
 using Microservices.Demo.Policy.API.Domain;
-using Microservices.Demo.Policy.API.Domain.Entities;
 using Microservices.Demo.Policy.API.Infrastructure.Agents.Pricing;
 using Microservices.Demo.Policy.API.Infrastructure.Data.Entities;
 using Microservices.Demo.Policy.API.Infrastructure.Data.UnitOfWork;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -16,9 +13,9 @@ namespace Microservices.Demo.Policy.API.CQRS.Commands.CreateOfferByAgent
     public class CreateOfferByAgentHandler : IRequestHandler<CreateOfferByAgentCommand, CreateOfferResult>
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IPricingAgent<Price, Answer> _pricingAgent;
+        private readonly IPricingAgent _pricingAgent;
 
-        public CreateOfferByAgentHandler(IUnitOfWork unitOfWork, IPricingAgent<Price, Answer> pricingAgent)
+        public CreateOfferByAgentHandler(IUnitOfWork unitOfWork, IPricingAgent pricingAgent)
         {
             _unitOfWork = unitOfWork;
             _pricingAgent = pricingAgent;
@@ -58,9 +55,9 @@ namespace Microservices.Demo.Policy.API.CQRS.Commands.CreateOfferByAgent
             };
         }
 
-        private PricingParams<Answer> ConstructPriceParams(CreateOfferCommand request)
+        private PricingParams ConstructPriceParams(CreateOfferCommand request)
         {
-            return new PricingParams<Answer>
+            return new PricingParams
             {
                 ProductCode = request.ProductCode,
                 PolicyFrom = request.PolicyFrom,

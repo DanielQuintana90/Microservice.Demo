@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Microservices.Demo.Policy.API.Domain.Entities
+namespace Microservices.Demo.Policy.API.Infrastructure.Data.Entities
 {
     public class Price
     {
