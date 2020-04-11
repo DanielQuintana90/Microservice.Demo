@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
             this.authService.redirectUrl = '';
             this.router.navigate([redirectUrl]);
           } else {
-            this.router.navigate(['/']);
+            this.router.navigate(['/']); 
           }
         } else {
           const loginError = 'Unable to login';

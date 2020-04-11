@@ -15,7 +15,7 @@ namespace Microservices.Demo.DiscoveryServer
         {
             var psi = new ProcessStartInfo
             {
-                FileName = @"D:\maven\bin\mvn.cmd",
+                FileName = @"C:\maven\bin\mvn.cmd",
                 Arguments = @"-f discovery-server spring-boot:run",
                 UseShellExecute = false,
                 RedirectStandardOutput = true,
