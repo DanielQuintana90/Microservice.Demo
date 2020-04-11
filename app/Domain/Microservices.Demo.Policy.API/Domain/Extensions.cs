@@ -11,6 +11,7 @@ namespace Microservices.Demo.Policy.API.Domain
         public static IServiceCollection AddDomainServices(this IServiceCollection services)
         {
             services.AddTransient<OfferDomainService>();
+            services.AddTransient<PolicyDomainService>();
 
             return services;
         }

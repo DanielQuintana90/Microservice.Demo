@@ -1,6 +1,6 @@
 ﻿using MediatR;
-using Microservices.Demo.Policy.API.CQRS.Commands.CreateOffer;
-using Microservices.Demo.Policy.API.CQRS.Commands.CreateOfferByAgent;
+using Microservices.Demo.Policy.API.CQRS.Commands.Offer.CreateOffer;
+using Microservices.Demo.Policy.API.CQRS.Commands.Offer.CreateOfferByAgent;
 using System;
 using System.Collections.Generic;
 using System.Linq;

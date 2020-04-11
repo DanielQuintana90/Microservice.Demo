@@ -10,6 +10,7 @@ using Microservices.Demo.Policy.API.Infrastructure.Agents;
 using Microservices.Demo.Policy.API.Infrastructure.Configuration;
 using Microservices.Demo.Policy.API.Infrastructure.Data;
 using Microservices.Demo.Policy.API.Infrastructure.Dtos.Converters;
+using Microservices.Demo.Policy.API.Infrastructure.Messaging;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -43,6 +44,7 @@ namespace Microservices.Demo.Policy.API
             services.AddApplicationServices();
             services.AddDomainServices();
             services.AddDataServices(Configuration);
+            services.AddMessaging();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Microservices.Demo.Policy.API", Version = "v1" });

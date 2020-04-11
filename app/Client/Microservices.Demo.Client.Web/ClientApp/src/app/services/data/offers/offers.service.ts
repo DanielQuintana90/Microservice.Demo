@@ -18,7 +18,7 @@ export class OffersService {
     @Inject('Window') private window: Window
   ) { }
 
-  calculatePrice(createOfferCommand: ICreateOfferCommand): Observable<any> {
+  calculatePrice(createOfferCommand: ICreateOfferCommand): Observable<ICreateOfferResult> {
     return this.http.post<ICreateOfferResult>(this.offersApiUrl, createOfferCommand)
       .pipe(catchError(this.handleError));
   }

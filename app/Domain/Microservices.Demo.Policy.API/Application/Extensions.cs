@@ -11,6 +11,7 @@ namespace Microservices.Demo.Policy.API.Application
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddTransient<OfferApplicationService>();
+            services.AddTransient<PolicyApplicationService>();
 
             return services;
         }

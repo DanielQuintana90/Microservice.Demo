@@ -108,7 +108,7 @@
       </mat-card-content>
       <mat-card-actions fxLayout="row" fxLayoutAlign="center center">
         <div *ngIf="IsReadOnly()">
-          <button mat-raised-button color="primary">BUY</button>
+          <a mat-raised-button [routerLink]="['/policies/fromOffer',offer.OfferNumber]" color="primary">BUY</a>
           <a mat-button (click)="changeParameters()" color="primary" >CHANGE PARAMETERS</a>
         </div>
         <div *ngIf="!IsReadOnly()">

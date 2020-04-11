@@ -15,9 +15,9 @@
             _policyDbContext = policyDbContext;
         }
 
-        public async Task Add(Policy policy)
+        public void Add(Policy policy)
         {
-            await _policyDbContext.Policies.AddAsync(policy);
+            _policyDbContext.Policies.Add(policy);
         }
 
         public async Task<Policy> WithNumber(string number)

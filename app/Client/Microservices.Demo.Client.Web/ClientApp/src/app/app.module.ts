@@ -22,10 +22,8 @@ const routes: Routes = [
     canActivate: [CanActivateGuard],
     children: [
       { path: '', component: HomeComponent, pathMatch: 'full' },
-     // { path: 'products', component: ProductsComponent },
       { path: 'products', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) },
-      //{ path: 'products/:code', loadChildren: () => import('./products/products.module').then(m => m.ProductsModule) },
-      { path: 'policies', component: PoliciesComponent },
+      { path: 'policies', loadChildren: () => import('./policies/policies.module').then(m => m.PoliciesModule) },
       { path: 'chat', component: ChatComponent }
     ]
   },

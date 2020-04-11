@@ -13,6 +13,9 @@ namespace Microservices.Demo.Policy.API.Infrastructure.Data.Entities
             LastName = lastName;
             Pesel = pesel;
             Address = address;
+
+            Offers = new HashSet<Offer>();
+            PolicyVersions = new HashSet<PolicyVersion>();
         }
     }
 }

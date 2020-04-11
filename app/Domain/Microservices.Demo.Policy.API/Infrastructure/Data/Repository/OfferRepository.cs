@@ -24,7 +24,12 @@ namespace Microservices.Demo.Policy.API.Infrastructure.Data.Repository
 
         public async Task<Offer> WithNumber(string number)
         {
-            return await _policyDbContext.Offers.Where(o => o.Number == number).FirstOrDefaultAsync();
+            return await _policyDbContext.Offers
+                .Include(i=>i.PolicyValidityPeriod)
+                .Include(i=>i.OfferCovers)
+                .Include(i => i.OfferStatus)
+                .Include(i => i.PolicyHolder)
+                .Where(o => o.Number == number).FirstOrDefaultAsync();
         }
     }
 }
