@@ -1,4 +1,5 @@
 ﻿using Microservices.Demo.Policy.API.CQRS.Commands.Infrastructure.Dtos.Offer;
+using Microservices.Demo.Policy.API.Domain.Entities;
 using Microservices.Demo.Policy.API.Infrastructure.Agents.Pricing.Commands;
 using Microservices.Demo.Policy.API.Infrastructure.Data.Entities;
 using System;

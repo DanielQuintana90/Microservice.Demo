@@ -19,6 +19,7 @@ namespace Microservices.Demo.Policy.API.Infrastructure.Data.Context
         }
 
         public virtual DbSet<Address> Addresses { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<Offer> Offers { get; set; }
         public virtual DbSet<OfferCover> OfferCovers { get; set; }
         public virtual DbSet<OfferStatus> OfferStatuses { get; set; }
@@ -58,6 +59,15 @@ namespace Microservices.Demo.Policy.API.Infrastructure.Data.Context
 
                 entity.Property(e => e.ZipCode)
                     .HasMaxLength(250)
+                    .IsUnicode(false);
+            });
+
+            modelBuilder.Entity<Message>(entity =>
+            {
+                entity.ToTable("Message");
+
+                entity.Property(e => e.Type)
+                    .HasMaxLength(500)
                     .IsUnicode(false);
             });
 

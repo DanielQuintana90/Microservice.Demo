@@ -8,7 +8,7 @@ namespace Microservices.Demo.Policy.API.Infrastructure.Data.Repository
     using Microservices.Demo.Policy.API.Infrastructure.Data.Entities;
     public interface IPolicyRepository
     {
-        Task Add(Policy policy);
+        void Add(Policy policy);
 
         Task<Policy> WithNumber(string number);
     }

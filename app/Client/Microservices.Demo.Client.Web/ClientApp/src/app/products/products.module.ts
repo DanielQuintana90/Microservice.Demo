@@ -4,7 +4,6 @@ import { ProductsRoutingModule } from './products-routing.module';
 import { SharedModule } from '../shared/shared.module';
 
 
-
 @NgModule({
   declarations: [ProductsRoutingModule.components],
   imports: [

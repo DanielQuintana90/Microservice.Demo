@@ -1,17 +1,19 @@
 ﻿namespace Microservices.Demo.Policy.API.Domain
 {
+    using Microservices.Demo.Policy.API.Domain.Entities;
     using Microservices.Demo.Policy.API.Infrastructure.Data.Entities;
     using System;
+    using System.Linq;
 
     public class OfferDomainService
     {
-        public static Offer CreateOfferForPrice(String productCode,
+        public Offer CreateOfferForPrice(String productCode,
             DateTime policyFrom,
             DateTime policyTo,
             PolicyHolder policyHolder,
             Price price)
         {
-            return new Offer
+            return CreateOffer
             (
                 productCode,
                 policyFrom,
@@ -22,7 +24,30 @@
             );
         }
 
-        public static Offer CreateOfferForPriceAndAgent(
+        public Offer CreateOffer(
+           string productCode,
+           DateTime policyFrom,
+           DateTime policyTo,
+           PolicyHolder policyHolder,
+           Price price,
+           string agentLogin)
+        {
+            return new Offer
+            {
+                Number = Guid.NewGuid().ToString(),
+                ProductCode = productCode,
+                PolicyValidityPeriod = PolicyValidityPeriodBetween(policyFrom, policyTo),
+                PolicyHolder = policyHolder,
+                OfferCovers = price.CoverPrices.Select(c => new OfferCover(c.Key, c.Value)).ToList(),
+                OfferStatusId = (int)Enum.OfferStatus.New,
+                CreationDate = SysTime.CurrentTime,
+                TotalPrice = price.CoverPrices.Sum(c => c.Value),
+                AgentLogin = agentLogin
+            };
+
+        }
+
+        public Offer CreateOfferForPriceAndAgent(
            string productCode,
            DateTime policyFrom,
            DateTime policyTo,
@@ -30,7 +55,7 @@
            Price price,
            string agent)
         {
-            return new Offer
+            return CreateOffer
             (
                 productCode,
                 policyFrom,
@@ -40,9 +65,9 @@
                 agent
             );
         }
-        public virtual Policy Buy(Offer offer, PolicyHolder customer)
+        public Offer Buy(Offer offer, PolicyHolder customer)
         {
-            if (IsExpired(offer,SysTime.CurrentTime))
+            if (IsExpired(offer, SysTime.CurrentTime))
                 throw new ApplicationException($"Offer {offer.Number} has expired");
 
             if (offer.OfferStatusId != (int)Enum.OfferStatus.New)
@@ -50,11 +75,16 @@
 
             offer.OfferStatusId = (int)Enum.OfferStatus.Converted;
 
-            return Policy.FromOffer(customer, offer);
+            return offer;
         }
+        
         public virtual bool IsExpired(Offer offer, DateTime theDate)
         {
             return offer.CreationDate.AddDays(30) < theDate;
+        }
+        public PolicyValidityPeriod PolicyValidityPeriodBetween(DateTime validFrom, DateTime validTo)
+        {
+            return new PolicyValidityPeriod(validFrom, validTo);
         }
     }
 }

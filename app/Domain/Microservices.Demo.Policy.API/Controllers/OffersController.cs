@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
 using Microservices.Demo.Policy.API.Application;
-using Microservices.Demo.Policy.API.CQRS.Commands.CreateOffer;
+using Microservices.Demo.Policy.API.CQRS.Commands.Offer.CreateOffer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

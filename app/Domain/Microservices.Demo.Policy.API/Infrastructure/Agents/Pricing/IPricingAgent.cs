@@ -1,4 +1,5 @@
-﻿using Microservices.Demo.Policy.API.Infrastructure.Data.Entities;
+﻿using Microservices.Demo.Policy.API.Domain.Entities;
+using Microservices.Demo.Policy.API.Infrastructure.Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

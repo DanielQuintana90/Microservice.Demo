@@ -14,10 +14,11 @@ namespace Microservices.Demo.Policy.API.Infrastructure.Data.UnitOfWork
         private readonly IDbContextTransaction tx;
         private readonly OfferRepository _offerRepository;
         private readonly PolicyRepository _policyRepository;
+        private readonly MessageRepository _messageRepository;
 
         public IOfferRepository Offers => _offerRepository;
-
         public IPolicyRepository Policies => _policyRepository;
+        public IMessageRepository Messages => _messageRepository;
 
 
         public UnitOfWork(PolicyDbContext policyDbContext)
@@ -26,6 +27,7 @@ namespace Microservices.Demo.Policy.API.Infrastructure.Data.UnitOfWork
             tx = _policyDbContext.Database.BeginTransaction();
             _offerRepository = new OfferRepository(policyDbContext);
             _policyRepository = new PolicyRepository(policyDbContext);
+            _messageRepository = new MessageRepository(policyDbContext);
         }
 
         public async Task CommitChanges()
@@ -37,10 +39,16 @@ namespace Microservices.Demo.Policy.API.Infrastructure.Data.UnitOfWork
             }
             catch (Exception ex)
             {
-
+                await tx.RollbackAsync();
                 throw ex;
             }
            
+        }
+
+        public async Task SaveAsync(object obj)
+        {
+            _policyDbContext.Add(obj);
+            await _policyDbContext.SaveChangesAsync();
         }
 
         public void Dispose()

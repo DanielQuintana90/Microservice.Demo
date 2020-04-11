@@ -5,16 +5,13 @@ using System.Threading.Tasks;
 
 namespace Microservices.Demo.Policy.API.Infrastructure.Data.Entities
 {
-    public partial class PolicyValidityPeriod: ICloneable
+    public partial class PolicyValidityPeriod
     {
         public PolicyValidityPeriod(DateTime policyFrom, DateTime policyTo)
         {
             PolicyFrom = policyFrom;
             PolicyTo = policyTo;
         }
-        public static PolicyValidityPeriod Between(DateTime policyFrom, DateTime policyTo)
-           => new PolicyValidityPeriod(policyFrom, policyTo);
-
         public PolicyValidityPeriod Clone()
         {
             return new PolicyValidityPeriod(PolicyFrom, PolicyTo);
@@ -28,18 +25,6 @@ namespace Microservices.Demo.Policy.API.Infrastructure.Data.Entities
                 return false;
 
             return true;
-        }
-
-        public PolicyValidityPeriod EndOn(DateTime endDate)
-        {
-            return new PolicyValidityPeriod(PolicyFrom, endDate);
-        }
-
-        public int Days => PolicyTo.Subtract(PolicyFrom).Days;
-
-        object ICloneable.Clone()
-        {
-            return Clone();
         }
     }
 }

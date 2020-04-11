@@ -69,6 +69,7 @@
     <Build Include="Tables\PolicyStatus.sql" />
     <Build Include="Tables\PolicyVersion.sql" />
     <Build Include="Tables\PolicyCover.sql" />
+    <Build Include="Tables\Message.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="InitData.sql" />

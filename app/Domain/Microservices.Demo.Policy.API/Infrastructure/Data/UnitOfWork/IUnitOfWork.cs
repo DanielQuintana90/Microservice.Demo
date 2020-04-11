@@ -12,6 +12,9 @@ namespace Microservices.Demo.Policy.API.Infrastructure.Data.UnitOfWork
 
         IPolicyRepository Policies { get; }
 
+        IMessageRepository Messages { get; }
+
         Task CommitChanges();
+        Task SaveAsync(object obj);
     }
 }
