@@ -9,6 +9,7 @@ export class PoliciesComponent implements OnInit {
 
   constructor() { }
 
+
   ngOnInit(): void {
   }
 
