@@ -1,0 +1,32 @@
+
+
+  <div class="container">
+
+    <h2> Listado de polizas adquiridas </h2>
+
+    <hr/>
+
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>PolicyId</th>
+          <th>Number</th>
+          <th>ProductCode</th>
+          <th>AgentLogin</th>
+          <th>PolicyStatusId</th>
+          <th>CreationDate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let policy of policies">
+          <td>{{policy.PolicyId}}</td>
+          <td>{{policy.Number}}</td>
+          <td>{{policy.ProductCode}}</td>
+          <td>{{policy.AgentLogin}}</td>
+          <td>{{policy.PolicyStatusId}}</td>
+          <td>{{policy.CreationDate}}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>

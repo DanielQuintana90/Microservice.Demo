@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 namespace Microservices.Demo.Report.API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ReportsController : ControllerBase
     {
         private readonly PolicyApplicationService _policyApplicationService;

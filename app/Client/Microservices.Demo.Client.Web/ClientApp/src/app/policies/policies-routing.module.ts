@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { PoliciesComponent } from './policies.component';
 import { PolicyCreateComponent } from './policy-create/policy-create.component';
+import { PolicyListComponent } from './policy-list/policy-list.component';
 
 
 
@@ -10,6 +11,7 @@ const routes: Routes = [
   {
     path: '', component: PoliciesComponent,
     children: [
+      { path: 'list', component: PolicyListComponent },
       { path: 'fromOffer/:offerNumber', component: PolicyCreateComponent },
     ]
   }
@@ -25,6 +27,7 @@ const routes: Routes = [
 })
 export class PoliciesRoutingModule {
   static components = [
-    PolicyCreateComponent
+    PolicyCreateComponent,
+    PolicyListComponent
   ];
 }

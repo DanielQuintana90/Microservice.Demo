@@ -24,8 +24,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\models\ipolicy.ts" />
+    <None Remove="ClientApp\src\app\policies\policy-list\policy-list.component.ts" />
     <None Remove="ClientApp\src\app\services\data\offers\icreate-offer-command.ts" />
     <None Remove="ClientApp\src\app\services\data\offers\icreate-offer-result.ts" />
+    <None Remove="ClientApp\src\app\services\data\policy.service.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,8 +36,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\models\ipolicy.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\policies\policy-list\policy-list.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\data\offers\icreate-offer-command.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\data\offers\icreate-offer-result.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\data\policy.service.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
