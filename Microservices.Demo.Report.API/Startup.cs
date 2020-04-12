@@ -18,6 +18,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Serialization;
+using Steeltoe.Discovery.Client;
 
 namespace Microservices.Demo.Report.API
 {
@@ -34,7 +35,7 @@ namespace Microservices.Demo.Report.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddConfigurations(Configuration);
-
+            services.AddDiscoveryClient(Configuration);
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddApplicationServices();
             services.AddDomainServices();
@@ -61,6 +62,8 @@ namespace Microservices.Demo.Report.API
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseDiscoveryClient();
 
             app.UseSwagger();
             app.UseSwaggerUI(c =>

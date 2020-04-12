@@ -6,11 +6,11 @@ namespace Microservices.Demo.Report.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ReportController : ControllerBase
+    public class ReportsController : ControllerBase
     {
         private readonly PolicyApplicationService _policyApplicationService;
 
-        public ReportController(PolicyApplicationService policyApplicationService)
+        public ReportsController(PolicyApplicationService policyApplicationService)
         {
             _policyApplicationService = policyApplicationService;
         }

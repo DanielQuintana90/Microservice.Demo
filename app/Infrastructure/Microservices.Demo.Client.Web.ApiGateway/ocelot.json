@@ -34,6 +34,45 @@
     },
 
     {
+      "DownstreamPathTemplate": "/api/Reports/{everything}",
+      "DownstreamScheme": "https",
+      "UpstreamPathTemplate": "/api/Reports/{everything}",
+      "ServiceName": "Microservices.Demo.Report.API",
+      "UpstreamHttpMethod": [ "Get" ],
+      "FileCacheOptions": { "TtlSeconds": 15 },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "ApiSecurityAuthenticationScheme",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "userType": "SALESMAN"
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true,
+      "AddHeadersToRequest": {
+        "AgentLogin": "Claims[http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier] > value[0] > |"
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/Reports",
+      "DownstreamScheme": "https",
+      "UpstreamPathTemplate": "/api/Reports",
+      "ServiceName": "Microservices.Demo.Report.API",
+      "UpstreamHttpMethod": [ "Get" ],
+      "FileCacheOptions": { "TtlSeconds": 15 },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "ApiSecurityAuthenticationScheme",
+        "AllowedScopes": []
+      },
+      "RouteClaimsRequirement": {
+        "userType": "SALESMAN"
+      },
+      "DangerousAcceptAnyServerCertificateValidator": true,
+      "AddHeadersToRequest": {
+        "AgentLogin": "Claims[http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier] > value[0] > |"
+      }
+    },
+
+    {
       "DownstreamPathTemplate": "/api/Offers",
       "DownstreamScheme": "https",
       "UpstreamPathTemplate": "/api/Offers",
