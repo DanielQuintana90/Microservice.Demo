@@ -1,7 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using MediatR;
+using Microservices.Demo.Report.API.Application;
+using Microservices.Demo.Report.API.Domain;
 using Microservices.Demo.Report.API.Infrastructure.Configuration;
 using Microservices.Demo.Report.API.Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +35,9 @@ namespace Microservices.Demo.Report.API
         {
             services.AddConfigurations(Configuration);
 
+            services.AddMediatR(Assembly.GetExecutingAssembly());
+            services.AddApplicationServices();
+            services.AddDomainServices();
             services.AddDataServices(Configuration);
 
             services.AddSwaggerGen(c =>

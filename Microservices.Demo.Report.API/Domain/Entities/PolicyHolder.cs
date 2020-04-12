@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Microservices.Demo.Report.API.Infrastructure.Data.Entities
+namespace Microservices.Demo.Report.API.Domain.Entities
 {
     public partial class PolicyHolder
     {

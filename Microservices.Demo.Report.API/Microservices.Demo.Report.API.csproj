@@ -14,7 +14,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Infrastructure\Data\Entities\" />
+    <Folder Include="CQRS\Commands\" />
+    <Folder Include="Domain\Entities\" />
+    <Folder Include="Domain\Interfaces\Services\" />
+    <Folder Include="Domain\Services\" />
   </ItemGroup>
 
 

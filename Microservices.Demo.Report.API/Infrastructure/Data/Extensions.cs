@@ -1,4 +1,5 @@
-﻿using Microservices.Demo.Report.API.Infrastructure.Data.Context;
+﻿using Microservices.Demo.Report.API.Domain.Interfaces.Repository;
+using Microservices.Demo.Report.API.Infrastructure.Data.Context;
 using Microservices.Demo.Report.API.Infrastructure.Data.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
